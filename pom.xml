@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>eu.europeana.entity</groupId>
+	<artifactId>entity-tools</artifactId>
+	<version>${version.entityTools}</version>
+	<packaging>pom</packaging>
+	<name>Entity API parent</name>
+
+	<repositories>
+		<repository>
+			<id>libs-release-local</id>
+			<name>europeana-releases</name>
+			<url>http://artifactory.eanadev.org/artifactory/libs-release</url>
+		</repository>
+		<repository>
+			<id>libs-snapshot-local</id>
+			<name>europeana-snapshots</name>
+			<url>http://artifactory.eanadev.org/artifactory/libs-snapshot</url>
+		</repository>
+			
+		<repository>
+			<id>central</id>
+			<url>http://central.maven.org/maven2/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<version.java>1.8</version.java>
+		<version.entityTools>0.0.1-SNAPSHOT</version.entityTools>
+		<version.org.junit.jupiter>5.1.0</version.org.junit.jupiter>
+		<!--
+		<version.junit>4.12</version.junit>
+		<version.corelib>2.9.2</version.corelib>
+		<version.annotationLd>1.1.5</version.annotationLd>
+		<version.apacheSolr>7.7.2</version.apacheSolr>
+		-->
+		<version.commonsApi>0.2.9</version.commonsApi>
+		<version.commonsLang3>3.0</version.commonsLang3>
+		<version.spring>5.1.7.RELEASE</version.spring>
+		<version.springBoot>2.1.5.RELEASE</version.springBoot>
+		<version.jackson>2.9.10</version.jackson>
+		<version.jaxb>2.3.1</version.jaxb>
+		<version.codehausJackson>1.9.9</version.codehausJackson>
+		<version.servletJstl>1.2</version.servletJstl>
+		<version.mapstruct>1.2.0.Final</version.mapstruct>
+		<version.log4j2>2.9.1</version.log4j2>
+		<version.javax.annotation>1.3.2</version.javax.annotation>
+		
+<!--  not used 
+		<version.httpclient>4.4.1</version.httpclient>
+-->		
+	
+	</properties>
+	<modules>
+		<module>entity-contentful-client</module>
+		<module>entity-contentful-web</module>
+	</modules>
+	<build>
+		<!-- configure source and output locations -->
+		<directory>target</directory>
+		<outputDirectory>target/classes</outputDirectory>
+		<finalName>${artifactId}-${version}</finalName>
+		<testOutputDirectory>target/test-classes</testOutputDirectory>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
+
+		<!-- plugins -->
+		<plugins>
+			<plugin>
+				<inherited>true</inherited>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${version.java}</source>
+					<target>${version.java}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
